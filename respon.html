@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Responsável</title>
+  <link rel="stylesheet" href="css/responsavel.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+  <button class="toggle-btn" id="toggleBtn">☰</button> <!-- botão hamburguer -->
+  <h2 class="logo"></h2> <!-- logo pequeno quando minimizado -->
+  <nav>
+    <a href="#" class="active" title="Dashboard"><span>Dashboard</span></a>
+    <a href="#" title="Usuários"><span>Usuários</span></a>
+    <a href="#" title="Turmas"><span>Turmas</span></a>
+    <a href="#" title="Relatórios"><span>Relatórios</span></a>
+    <a href="#" title="Configurações"><span>Configurações</span></a>
+  </nav>
+  <span></span><button class="btn-logout" title="Sair">Sair</button></span>
+</div>
+
+  <div class="main-content">
+    <header>
+      <div>
+        <h1>Dashboard Responsável</h1>
+        <small>Acompanhe o desempenho do aluno</small>
+      </div>
+      <div class="user-info">
+        <div class="user-role">Aluno</div>
+        <div class="user-name">Pedro Silva</div>
+      </div>
+    </header>
+
+    <section class="cards">
+      <div class="card card-green">
+        <div class="card-title">Média Geral</div>
+        <div class="card-value">8.3</div>
+        <div class="card-subtext">+0.5 vs último bimestre</div>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">Frequência</div>
+        <div class="card-value">95%</div>
+        <div class="card-subtext">Excelente presença</div>
+      </div>
+      <div class="card card-orange">
+        <div class="card-title">Atividades</div>
+        <div class="card-value">28/30</div>
+        <div class="card-subtext">93% de conclusão</div>
+      </div>
+      <div class="card card-purple">
+        <div class="card-title">Comportamento</div>
+        <div class="card-value">Ótimo</div>
+        <div class="card-subtext">Sem ocorrências</div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-container">
+        <h3>Gráfico de Notas</h3>
+        <canvas id="graficoNotas"></canvas>
+        <select id="selectAno">
+          <option>2024</option>
+          <option>2023</option>
+        </select>
+      </div>
+      <div class="chart-container">
+        <h3>Frequência (Qtd.)</h3>
+        <canvas id="graficoFrequencia"></canvas>
+        <div class="legend">
+          <span class="dot green"></span>Presente
+          <span class="dot red"></span>Falta
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-section">
+      <div class="calendar">
+        <h3>Calendário</h3>
+        <div class="event green">
+          <div class="date">MAR <span>15</span></div>
+          <div>
+            <strong>Prova de Matemática</strong><br />
+            <small>09:00 - 11:00</small>
+          </div>
+        </div>
+        <div class="event blue">
+          <div class="date">MAR <span>18</span></div>
+          <div>
+            <strong>Entrega de Trabalho</strong><br />
+            <small>História</small>
+          </div>
+        </div>
+        <div class="event orange">
+          <div class="date">MAR <span>20</span></div>
+          <div>
+            <strong>Reunião de Pais</strong><br />
+            <small>18:00 - 20:00</small>
+          </div>
+        </div>
+      </div>
+      <div class="observations">
+        <h3>Observações dos Professores</h3>
+        <div class="obs green">
+          <strong>Profª. Maria Santos</strong><br />
+          Excelente participação nas aulas de Matemática.
+          <span class="date">14/03/2023</span>
+        </div>
+        <div class="obs blue">
+          <strong>Prof. João Silva</strong><br />
+          Precisa melhorar a organização dos cadernos.
+          <span class="date">13/03/2023</span>
+        </div>
+        <div class="obs orange">
+          <strong>Profª. Ana Costa</strong><br />
+          Ótimo desempenho na apresentação oral.
+          <span class="date">10/03/2023</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/responsavel.js"></script>
+</body>
+</html>
