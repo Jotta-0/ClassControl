@@ -29,6 +29,7 @@
             <a href="../index.html" class="nav-link-custom"><i class="fas fa-home"></i> Início</a>
             <!-- Página atual ativa -->
             <a href="#" class="nav-link-custom active"><i class="fas fa-calendar-alt"></i> Calendário</a>
+            <a href="#" class="nav-link-custom"><i class="fas fa-comment-dots"></i> Mensagens</a>
             <a href="#" class="nav-link-custom"><i class="fas fa-bullhorn"></i> Comunicados</a>
             <a href="#" class="nav-link-custom"><i class="fas fa-file-invoice-dollar"></i> Financeiro</a>
             
@@ -54,23 +55,33 @@
                 <div class="text-end">
                     <label class="tiny text-muted fw-bold d-block mb-1">VISUALIZANDO AGENDA DE:</label>
                     <select class="form-select form-select-sm border-0 bg-light fw-600" style="border-radius: 8px;">
-                        <option>Lucas Silva (Técnico em TI)</option>
-                        <option>Beatriz Silva (Aprendizagem)</option>
+                        <option>João Silva (Técnico em TI)</option>
+                        <option>Maria Silva (Aprendizagem)</option>
                     </select>
                 </div>
             </div>
         </header>
 
         <div class="row g-4">
-            <!-- COLUNA DO CALENDÁRIO MENSUAL -->
+            <!-- COLUNA DO CALENDÁRIO MENSAL -->
             <div class="col-lg-8">
                 <div class="stat-card">
                     <!-- Controles do Mês -->
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="fw-800 mb-0">Junho de 2026</h5>
+                        <h5 class="fw-800 mb-0" id="mes-ano-atual">Carregando Mês...</h5>
+    
                         <div class="btn-group">
-                            <button class="btn btn-outline-secondary btn-sm" disabled><i class="fas fa-chevron-left"></i></button>
-                            <button class="btn btn-outline-secondary btn-sm" disabled><i class="fas fa-chevron-right"></i></button>
+                            <button class="btn btn-outline-secondary btn-sm" id="btn-prev" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+
+                            <button class="btn btn-outline-secondary btn-sm fw-600 px-3" id="btn-today">
+                                Ir para hoje
+                            </button>
+
+                            <button class="btn btn-outline-secondary btn-sm" id="btn-next" disabled>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
 

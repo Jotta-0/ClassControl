@@ -1,10 +1,20 @@
 /* Customizações específicas para o layout de grade do calendário */
 
 .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: block; /* O container principal segura os headers */
+    width: 100%;
+}
+
+/* Criamos as 7 colunas tanto para os cabeçalhos (Dom, Seg...) quanto para os dias */
+.calendar-grid, 
+#calendar-days-container {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important; /* Força 7 colunas na horizontal */
     gap: 10px;
-    text-align: center;
+}
+
+#calendar-days-container {
+    grid-column: span 7; /* Faz o container dos dias ocupar as 7 colunas do pai */
 }
 
 .calendar-day-header {
@@ -13,13 +23,14 @@
     color: #94a3b8;
     text-transform: uppercase;
     padding-bottom: 5px;
+    text-align: center;
 }
 
-/* Células quadradas para os dias */
+/* Estilo das caixas dos dias */
 .calendar-cell {
     background-color: #f8fafc;
     border-radius: 12px;
-    min-height: 90px;
+    min-height: 85px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -27,6 +38,7 @@
     align-items: flex-start;
     transition: all 0.2s ease;
     border: 2px solid transparent;
+    overflow: hidden; /* Evita que textos fujam da célula */
 }
 
 .calendar-cell:hover {
@@ -40,19 +52,8 @@
     border-color: #004A8D;
 }
 
-.calendar-cell.hoje .numero-dia {
-    color: #004A8D;
-    font-weight: 800;
-}
-
 .calendar-cell.outro-mes {
     opacity: 0.25;
-    cursor: default;
-}
-
-.calendar-cell.outro-mes:hover {
-    background-color: #f8fafc;
-    border-color: transparent;
 }
 
 .numero-dia {
@@ -69,6 +70,16 @@
     gap: 4px;
     margin-top: 4px;
     text-align: left;
+}
+
+/* Tratamento do texto do evento para não quebrar a linha */
+.event-tag-container span.text-truncate {
+    font-size: 11px !important;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona o "..." se o texto for maior que o card */
+    width: 100%;
 }
 
 .event-dot-mini {
@@ -97,3 +108,45 @@
 .item-evento-lateral.ev-avaliacao { border-left-color: #ef4444; }
 .item-evento-lateral.ev-reuniao { border-left-color: #004A8D; }
 .item-evento-lateral.ev-recesso { border-left-color: #22c55e; }
+
+
+/* ===================================================
+   MEDIA QUERY: Ajustes para telas pequenas (Responsivo)
+   =================================================== */
+@media (max-width: 768px) {
+    /* Diminui o espaço entre os dias para o calendário não espremer */
+    .calendar-grid, 
+    #calendar-days-container {
+        gap: 4px !important;
+    }
+
+    /* Encolhe a altura das células para virar um quadrado responsivo */
+    .calendar-cell {
+        min-height: 55px;
+        padding: 6px;
+        justify-content: center;
+        align-items: center; /* Centraliza o número e a bolinha */
+    }
+
+    .numero-dia {
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
+    /* O SEGREDO: Esconde o texto escrito do evento e deixa APENAS a bolinha */
+    .event-tag-container span.text-truncate {
+        display: none !important;
+    }
+
+    .event-tag-container {
+        align-items: center;
+        margin-top: 2px;
+        gap: 0;
+    }
+
+    /* Dá um leve destaque na bolinha já que ela vira o único indicador */
+    .event-dot-mini {
+        height: 7px;
+        width: 7px;
+    }
+}
