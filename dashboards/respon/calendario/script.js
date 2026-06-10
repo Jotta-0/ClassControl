@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Fallback UX: Se o loop terminou e nenhum card foi injetado na lateral, exibe mensagem amigável de vazio
             if (listaLateral.innerHTML === '') {
-                listaLateral.innerHTML = '<div class="text-muted tiny text-center p-4">Nenhum compromisso agendado para este mês.</div>';
+                listaLateral.innerHTML = '<div class="text-muted tiny text-center p-4">Nenhum compromisso agendado para este mês no momento.</div>';
             }
 
         }, 0); // Tempo zerado para que o navegador processe em tempo de execução imediato
