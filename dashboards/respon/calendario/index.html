@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsável - Calendário Escolar</title>
+    <title>ClassControl</title>
 
     <!-- Fontes e Ícones Globais -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
     <!-- SIDEBAR DO RESPONSÁVEL -->
     <aside class="sidebar">
         <div class="sidebar-header mb-5">
-            <!-- Caminho corrigido para a logo na raiz -->
             <img src="../../../assets/imagens/Logo.png" alt="Logo ClassControl" width="150">
         </div>
         <nav>
@@ -30,11 +29,10 @@
             <!-- Página atual ativa -->
             <a href="#" class="nav-link-custom active"><i class="fas fa-calendar-alt"></i> Calendário</a>
             <a href="../mensagens/index.html" class="nav-link-custom"><i class="fas fa-comment-dots"></i> Mensagens</a>
-            <a href="#" class="nav-link-custom"><i class="fas fa-bullhorn"></i> Comunicados</a>
+            <a href="../comunicados/index.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i> Comunicados</a>
             <a href="#" class="nav-link-custom"><i class="fas fa-cog"></i> Configurações</a>
             
             <div class="logout-section mt-auto">
-                <!-- Sobe 2 níveis para ir para a pasta de login -->
                 <a href="../../login/index.html" class="nav-link-custom text-danger">
                     <i class="fas fa-sign-out-alt"></i> Sair
                 </a>
@@ -122,6 +120,7 @@
     </main>
 
     <!-- Procura o script.js que está na mesma pasta -->
+     <script src="../../../shared/js/main.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

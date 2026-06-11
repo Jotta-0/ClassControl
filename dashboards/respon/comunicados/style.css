@@ -1,0 +1,37 @@
+/* Classes Auxiliares de Tipografia */
+.fw-800 { font-weight: 800; }
+.fw-700 { font-weight: 700; }
+.fw-600 { font-weight: 600; }
+.tiny { font-size: 12px; }
+.font-xs { font-size: 11px; }
+
+/* Customização dos Cards de Comunicados */
+.card-comunicado-custom {
+    border-radius: 16px;
+    border-left: 5px solid #cbd5e1; /* Borda cinza padrão para avisos normais */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-comunicado-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Destaque para Comunicados Urgentes */
+.card-comunicado-custom.urgente {
+    border-left-color: #ef4444; /* Força a borda esquerda vermelha */
+    background: linear-gradient(to right, #fffdfd, #ffffff);
+}
+
+.card-titulo-aviso {
+    font-size: 1.1rem;
+    letter-spacing: -0.3px;
+}
+
+/* Estilo do botão de marcar como lido */
+.btn-marcar-lido {
+    transition: color 0.2s ease;
+}
+.btn-marcar-lido:hover {
+    color: #b91c1c !important;
+}
