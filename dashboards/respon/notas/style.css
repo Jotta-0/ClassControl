@@ -1,0 +1,37 @@
+/* ==========================================================================
+   CLASSCONTROL | ESTILOS EXCLUSIVOS DA PÁGINA DE MINHAS NOTAS
+   ========================================================================== */
+
+/* --- CARD DE RESUMO GLOBAL --- */
+/* Garante que o gradiente da marca mantenha o contraste e cantos arredondados */
+.card-resumo-notas {
+    background: linear-gradient(135deg, #f58220, #e06b0d);
+    border-radius: 12px;
+}
+
+/* --- TABELA DE AVALIAÇÕES --- */
+/* Remove bordas desnecessárias do Bootstrap para um visual mais 'clean' */
+.table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Efeito Hover suave nas linhas da tabela para melhorar a leitura */
+.table-hover tbody tr:hover {
+    background-color: #f8fafc !important; 
+}
+
+/* --- BADGES DE RESULTADO (STATUS) --- */
+/* Customização das cores de fundo semitransparentes para os estados das UCs */
+.bg-success-subtle { background-color: rgba(34, 197, 94, 0.12) !important; }
+.bg-warning-subtle { background-color: rgba(234, 179, 8, 0.12) !important; }
+.bg-primary-subtle { background-color: rgba(59, 130, 246, 0.12) !important; }
+
+.text-success { color: #16a34a !important; }
+.text-warning { color: #ca8a04 !important; }
+.text-primary { color: #2563eb !important; }
