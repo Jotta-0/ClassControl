@@ -90,7 +90,7 @@ form.addEventListener("submit", async (e) => {
       break;
 
     case "RESPONSAVEL":
-      window.location.href = "/dashboards/responsavel/index.html";
+      window.location.href = "/dashboards/respon/index.html";
       break;
   }
 });
