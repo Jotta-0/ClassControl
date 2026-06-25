@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassControl - Configurações do Professor</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/shared/css/global.css"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <div class="wrapper-principal">
+        
+        <aside class="sidebar">
+        <button id="menu-toggle" class="menu-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+         
+        <div class="sidebar-header mb-5">
+            <img src="/assets/imagens/Logo.png" alt="Logo ClassControl" width="150">
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link-custom"><i class="fas fa-home"></i> Início</a>            
+            <a href="../diario/index.html" class="nav-link-custom"><i class="fas fa-clipboard-list"></i> Diário de Classe</a>
+            <a href="../plano-aula/index.html" class="nav-link-custom"><i class="fas fa-book-open"></i> Planos de Aula</a>
+            <a href="../atividades/index.html" class="nav-link-custom"><i class="fas fa-calendar-alt"></i> Avaliações e Calendário</a>
+            <a href="../mural/index.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i> Mural de Avisos</a>
+            <a href="../mensagens/index.html" class="nav-link-custom"><i class="fas fa-comments"></i> Mensagens</a>
+            <a href="#" class="nav-link-custom active"><i class="fas fa-cog"></i> Configurações</a>
+            
+            <div class="logout-section mt-auto">
+                <a href="#" id="btn-logout" class="nav-link-custom text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+        <main class="main-content">
+            <div class="container-fluid p-0">
+                
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div>
+                        <h1 class="fw-800 text-dark mb-1 h3">Configurações da Conta</h1>
+                        <p class="text-muted small mb-0">Gerencie seus dados docentes, credenciais de acesso e preferências de notificação.</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    
+                    <div class="col-12 col-lg-7">
+                        
+                        <div class="card card-config-base border-0 shadow-sm p-4 mb-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-primary-subtle text-primary rounded-3 p-2 me-3">
+                                    <i class="fas fa-user-tie fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h2 class="fw-700 text-dark h6 mb-0">Dados Funcionais e Cadastrais</h2>
+                                    <span class="text-muted tiny">Informações de identificação interna no ClassControl.</span>
+                                </div>
+                            </div>
+
+                            <form id="form-dados-docente">
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label fw-600 text-secondary small mb-1">Nome Completo</label>
+                                        <input type="text" class="form-control form-control-custom fw-600 text-dark" value="Prof. Carlos Alberto Silva" required>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label fw-600 text-secondary small mb-1">Matrícula Funcional</label>
+                                        <input type="text" class="form-control form-control-custom text-muted fw-600" value="DOC-20268841" disabled>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label fw-600 text-secondary small mb-1">E-mail Institucional</label>
+                                        <input type="email" class="form-control form-control-custom fw-600 text-dark" value="carlos.silva@classcontrol.com.br" required>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label fw-600 text-secondary small mb-1">Telefone / WhatsApp</label>
+                                        <input type="text" class="form-control form-control-custom fw-600 text-dark" value="(11) 98765-4321">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary fw-700 px-4 py-2 mt-2 rounded-3 small text-white">
+                                            Salvar Alterações
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="card card-config-base border-0 shadow-sm p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-danger-subtle text-danger rounded-3 p-2 me-3">
+                                    <i class="fas fa-shield-alt fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h2 class="fw-700 text-dark h6 mb-0">Segurança da Conta</h2>
+                                    <span class="text-muted tiny">Atualize sua credencial de acesso ao painel docente.</span>
+                                </div>
+                            </div>
+
+                            <form id="form-alterar-senha">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label fw-600 text-secondary small mb-1">Senha Atual</label>
+                                        <div class="input-group">
+                                            <input type="password" id="senha-atual" class="form-control form-control-custom fw-600" required>
+                                            <button class="btn btn-outline-light border px-3 text-muted" type="button" id="btn-toggle-senha">
+                                                <i id="icone-olho" class="fas fa-eye-slash text-muted"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label fw-600 text-secondary small mb-1">Nova Senha</label>
+                                        <input type="password" id="nova-senha" class="form-control form-control-custom fw-600" required>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label fw-600 text-secondary small mb-1">Confirmar Nova Senha</label>
+                                        <input type="password" id="confirma-senha" class="form-control form-control-custom fw-600" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-dark fw-700 px-4 py-2 mt-2 rounded-3 small">
+                                            Modificar Senha
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-lg-5">
+                        <div class="card card-config-base border-0 shadow-sm p-4 h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-warning-subtle text-warning rounded-3 p-2 me-3">
+                                    <i class="fas fa-bell fa-lg text-warning"></i>
+                                </div>
+                                <div>
+                                    <h2 class="fw-700 text-dark h6 mb-0">Preferências de Notificação</h2>
+                                    <span class="text-muted tiny">Escolha quais alertas deseja receber em seu e-mail.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row mb-3">
+                                <div class="me-3">
+                                    <label class="form-check-label d-block fw-700 text-dark small mb-1">Entregas de Atividades</label>
+                                    <span class="text-muted tiny d-block">Ser alertado por e-mail quando um aluno enviar um projeto ou atividade avaliativa fora do prazo.</span>
+                                </div>
+                                <input class="form-check-input ms-0 float-none switch-laranja" type="checkbox" role="switch" checked>
+                            </div>
+
+                            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row mb-3">
+                                <div class="me-3">
+                                    <label class="form-check-label d-block fw-700 text-dark small mb-1">Novas Mensagens</label>
+                                    <span class="text-muted tiny d-block">Receber avisos imediatos quando alunos, representantes ou a coordenação iniciarem um chat.</span>
+                                </div>
+                                <input class="form-check-input ms-0 float-none switch-laranja" type="checkbox" role="switch" checked>
+                            </div>
+
+                            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row mb-3">
+                                <div class="me-3">
+                                    <label class="form-check-label d-block fw-700 text-dark small mb-1">Mudanças no Calendário Técnico</label>
+                                    <span class="text-muted tiny d-block">Notificar alterações em conselhos de classe, reuniões pedagógicas ou feriados institucionais.</span>
+                                </div>
+                                <input class="form-check-input ms-0 float-none switch-laranja" type="checkbox" role="switch">
+                            </div>
+
+                            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row disabled-opacity">
+                                <div class="me-3">
+                                    <label class="form-check-label d-block fw-700 text-muted small mb-1">Comunicados da Direção Geral</label>
+                                    <span class="text-muted tiny d-block">Avisos de RH, auditorias, suspensões excepcionais ou informativos institucionais de alta prioridade.</span>
+                                </div>
+                                <input class="form-check-input ms-0 float-none" type="checkbox" role="switch" checked disabled>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/shared/js/main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
