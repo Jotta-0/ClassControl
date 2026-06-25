@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassControl | Avaliações e Calendário</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/shared/css/global.css"> 
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <aside class="sidebar">
+        <button id="menu-toggle" class="menu-toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+         
+        <div class="sidebar-header mb-5">
+            <img src="/assets/imagens/Logo.png" alt="Logo ClassControl" width="150">
+        </div>
+        <nav>
+            <a href="../index.html" class="nav-link-custom"><i class="fas fa-home"></i> Início </a>            
+            <a href="../diario/index.html" class="nav-link-custom"><i class="fas fa-clipboard-list"></i> Diário de Classe</a>
+            <a href="../plano-aula/index.html" class="nav-link-custom"><i class="fas fa-book-open"></i> Planos de Aula</a>
+            <a href="#" class="nav-link-custom active"><i class="fas fa-calendar-alt"></i> Avaliações e Calendário</a>
+            <a href="../mural/index.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i> Mural de Avisos</a>
+            <a href="../mensagens/index.html" class="nav-link-custom"><i class="fas fa-comments"></i> Mensagens</a>
+            <a href="../configuracoes/index.html" class="nav-link-custom"><i class="fas fa-cog"></i> Configurações</a>
+            
+            <div class="logout-section mt-auto">
+                <a href="#" id="btn-logout" class="nav-link-custom text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="mb-4">
+            <div class="user-card-mini d-flex justify-content-between align-items-center w-100">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Prof+Ricardo&background=004A8D&color=fff" class="rounded-pill shadow-sm" width="45">
+                    </div>
+                    <div>
+                        <h6 class="fw-800 mb-0">Prof. Ricardo Oliveira</h6>
+                        <span class="text-muted tiny">Especialista em Desenvolvimento de Sistemas</span>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column align-items-end">
+                    <label class="tiny text-muted fw-bold mb-1">TURMA EM FOCO:</label>
+                    <select id="seletor-turma" class="form-select border-0 shadow-sm" style="border-radius: 10px; min-width: 260px; cursor: pointer; background-color: #f8fafc;">
+                        <option value="Técnico em TI - Noite (Turma A)" selected>Técnico em TI - Noite (Turma A)</option>
+                        <option value="Desenvolvimento Web - Manhã">Desenvolvimento Web - Manhã</option>
+                        <option value="Lógica de Programação - Tarde">Lógica de Programação - Tarde</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-4">
+            
+            <div class="col-xl-7 col-lg-12">
+                <div class="card border-0 shadow-sm p-4 h-100" style="border-radius: 16px;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-800 text-primary mb-0" id="mes-ano-titulo">Junho de 2026</h5>
+                        <div class="btn-group shadow-sm" style="border-radius: 8px; overflow: hidden;">
+                            <button class="btn btn-white btn-sm border-0" id="btn-ant"><i class="fas fa-chevron-left"></i></button>
+                            <button class="btn btn-white btn-sm border-0 fw-bold" id="btn-hoje">Hoje</button>
+                            <button class="btn btn-white btn-sm border-0" id="btn-prox"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center align-middle mb-0" style="table-layout: fixed; border-color: #f1f5f9;">
+                            <thead>
+                                <tr class="tiny fw-bold text-muted text-uppercase" style="background-color: #f8fafc;">
+                                    <th class="py-3 border-0">Dom</th>
+                                    <th class="py-3 border-0">Seg</th>
+                                    <th class="py-3 border-0">Ter</th>
+                                    <th class="py-3 border-0">Qua</th>
+                                    <th class="py-3 border-0">Qui</th>
+                                    <th class="py-3 border-0">Sex</th>
+                                    <th class="py-3 border-0">Sáb</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendario-corpo" class="fw-600">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-5 col-lg-12">
+                <div class="card border-0 shadow-sm p-4 h-100" style="border-radius: 16px;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5 class="fw-800 text-dark mb-0">Avaliações Criadas</h5>
+                            <span class="tiny text-muted">Planejamento de notas e entregas</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm fw-bold px-3 py-2" style="border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#modalNovaAtividade">
+                            <i class="fas fa-plus me-1"></i> Criar
+                        </button>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3" id="lista-atividades">
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="modal fade" id="modalNovaAtividade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0" style="border-radius: 15px;">
+                <div class="modal-header border-0 pt-4 px-4">
+                    <h5 class="modal-title fw-800 text-primary">Agendar Nova Avaliação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4">
+                    <form id="form-nova-atividade">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-secondary">Nome do Trabalho / Prova</label>
+                            <input type="text" class="form-control" placeholder="Ex: Prova Mensal de POO" style="border-radius: 8px;" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold text-secondary">Data de Entrega/Aplicação</label>
+                                <input type="date" class="form-control" value="2026-06-24" style="border-radius: 8px;" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold text-secondary">Tipo</label>
+                                <select class="form-select" style="border-radius: 8px;">
+                                    <option value="Prova">Prova Presencial</option>
+                                    <option value="Trabalho">Trabalho / Atividade</option>
+                                    <option value="P.I.">Projeto Integrador (P.I.)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0 pb-4 px-4">
+                    <button type="button" class="btn btn-light fw-bold" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                    <button type="submit" form="form-nova-atividade" class="btn btn-primary fw-bold" style="border-radius: 8px;">Agendar Atividade</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/shared/js/main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
