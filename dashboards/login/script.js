@@ -14,7 +14,7 @@ let tipoSelecionado = null;
 
 
 // ✅ seleção visual
-function selecionarTipo(tipo, botao) {
+function selecionarTipo(tipo, botao){
   tipoSelecionado = tipo;
 
   // remove seleção de todos
@@ -29,9 +29,9 @@ function selecionarTipo(tipo, botao) {
 
 // eventos dos botões
 document.getElementById("btnResponsavel").onclick = (e) => selecionarTipo("RESPONSAVEL", e.target);
-document.getElementById("btnProfessor").onclick = (e) => selecionarTipo("PROFESSOR", e.target);
+document.getElementById("btnProfessor").onclick = (e)=> selecionarTipo("PROFESSOR", e.target);
 document.getElementById("btnAluno").onclick = (e) => selecionarTipo("ALUNO", e.target);
-document.getElementById("btnAdm").onclick = (e) => selecionarTipo("ADM", e.target);
+document.getElementById("btnAdm").onclick = (e)=> selecionarTipo("ADM", e.target);
 
 
 // ✅ login
@@ -47,7 +47,7 @@ form.addEventListener("submit", async (e) => {
     password
   });
 
-  if (error) {
+  if (error){
     alert(error.message);
     return;
   }
@@ -69,14 +69,14 @@ form.addEventListener("submit", async (e) => {
   const tipoBanco = usuario.tipo_de_usuario;
 
   // 🔒 validação do tipo escolhido
-  if (tipoSelecionado && tipoSelecionado !== tipoBanco) {
+  if (tipoSelecionado && tipoSelecionado !== tipoBanco){
     alert("Tipo de usuário incorreto!");
     await supabase.auth.signOut();
     return;
   }
 
   // ✅ redirecionamento
-  switch (tipoBanco) {
+  switch (tipoBanco){
     case "ADM":
       window.location.href = "/dashboards/admin/index.html";
       break;
