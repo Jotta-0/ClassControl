@@ -24,7 +24,7 @@ body {
 
 h1 {
   margin-bottom: 10px;
-  color: #1c2b4a;
+  color: #000000;
 }
 
 .subtitulo {
@@ -40,7 +40,7 @@ label {
 }
 
 input[type="number"],
-input[type="password"] {
+input[type="password"],[type="text"],[type="email"]  {
   width: 100%;
   padding: 12px;
   border-radius: 8px;

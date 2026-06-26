@@ -9,11 +9,11 @@ console.log("Script carregado com sucesso");
 
 const form = document.getElementById("loginForm");
 
-// 🔥 variável para guardar o tipo selecionado
+// variável para guardar o tipo selecionado
 let tipoSelecionado = null;
 
 
-// ✅ seleção visual
+// seleção visual
 function selecionarTipo(tipo, botao){
   tipoSelecionado = tipo;
 
@@ -34,7 +34,7 @@ document.getElementById("btnAluno").onclick = (e) => selecionarTipo("ALUNO", e.t
 document.getElementById("btnAdm").onclick = (e)=> selecionarTipo("ADM", e.target);
 
 
-// ✅ login
+// login
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -54,7 +54,7 @@ form.addEventListener("submit", async (e) => {
 
   const user = data.user;
 
-  // 🔥 buscar tipo no banco
+  // buscar tipo no banco
   const { data: usuario, error: err2 } = await supabase
     .from("usuarios")
     .select("tipo_de_usuario")
@@ -68,14 +68,14 @@ form.addEventListener("submit", async (e) => {
 
   const tipoBanco = usuario.tipo_de_usuario;
 
-  // 🔒 validação do tipo escolhido
+  // validação do tipo escolhido
   if (tipoSelecionado && tipoSelecionado !== tipoBanco){
     alert("Tipo de usuário incorreto!");
     await supabase.auth.signOut();
     return;
   }
 
-  // ✅ redirecionamento
+  // redirecionamento
   switch (tipoBanco){
     case "ADM":
       window.location.href = "/dashboards/admin/index.html";
