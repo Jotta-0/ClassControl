@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Filtra a lista com base no termo digitado e cargo escolhido
         const usuariosFiltrados = bancoUsuarios.filter(u => {
-            const correspondeBusca = u.nome.toLowerCase().includes(termoBusca) || u.email.toLowerCase().includes(termoBusca);
+            const correspondeBusca = u.nome.toLowerCase().includes(termoBusca) || u.email.toLowerCase().includes(termoBusca) || (u.cpf && u.cpf.replace(/\D/g, '').includes(termoBusca));
             const correspondeCargo = cargoSelecionado === 'Todos' || u.cargo === cargoSelecionado;
 
             return correspondeBusca && correspondeCargo;
