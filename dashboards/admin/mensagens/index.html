@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <!-- Configuração de caracteres para aceitar acentos e textos em português -->
+  <meta charset="UTF-8">
+
+  <!-- Faz a página se adaptar melhor em telas menores -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título que aparece na aba do navegador -->
+  <title>ClassControl | Mensagens</title>
+
+  <!-- Fonte usada no padrão visual do sistema -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap para grid, botões, cards e responsividade -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome para os ícones usados na sidebar e nos botões -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS global compartilhado entre as páginas do projeto -->
+  <link rel="stylesheet" href="/shared/css/global.css">
+
+  <!-- CSS específico da página de mensagens -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =============================== -->
+  <!-- SIDEBAR DO ADMINISTRADOR -->
+  <!-- =============================== -->
+  <aside class="sidebar">
+
+    <!-- Logo do sistema no topo da sidebar -->
+    <div class="sidebar-header mb-5">
+      <img src="/assets/imagens/Logo.png" alt="Logo ClassControl" width="150">
+    </div>
+
+    <!-- Menu principal do painel administrativo -->
+    <nav>
+
+      <!-- Link para a tela inicial do admin -->
+      <a href="../index.html" class="nav-link-custom">
+        <i class="fas fa-home"></i> Início
+      </a>
+
+      <!-- Link para gerenciamento de usuários -->
+      <a href="../usuarios/index.html" class="nav-link-custom">
+        <i class="fas fa-users"></i> Usuários
+      </a>
+
+      <!-- Link para gerenciamento de turmas -->
+      <a href="../turmas/index.html" class="nav-link-custom">
+        <i class="fas fa-graduation-cap"></i> Turmas
+      </a>
+
+      <!-- Página atual: por isso recebe a classe active -->
+      <a href="#" class="nav-link-custom active">
+        <i class="fas fa-comments"></i> Mensagens
+      </a>
+
+      <!-- Link para gerenciamento de comunicados -->
+      <a href="../comunicados/index.html" class="nav-link-custom">
+        <i class="fas fa-bullhorn"></i> Comunicados
+      </a>
+
+      <!-- Link para configurações do sistema -->
+      <a href="../configuracoes/index.html" class="nav-link-custom">
+        <i class="fas fa-cog"></i> Configurações
+      </a>
+
+      <!-- Área separada para botão de saída -->
+      <div class="logout-section mt-auto">
+        <a href="#" class="nav-link-custom text-danger">
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- =============================== -->
+  <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
+  <!-- =============================== -->
+  <main class="main-content">
+
+    <!-- Cabeçalho da tela de mensagens -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <!-- Título principal da página -->
+        <h4 class="fw-800 mb-1" style="color: #1e293b;">Central de Mensagens</h4>
+
+        <!-- Texto explicativo adaptado ao administrador -->
+        <p class="text-muted small mb-0">
+          Converse com professores, alunos, responsáveis e coordenação pelo painel administrativo.
+        </p>
+      </div>
+
+      <!-- Botão visual para futuramente iniciar uma nova conversa -->
+      <button class="btn btn-primary btn-sm fw-600 px-3 py-2" id="btn-nova-conversa">
+        <i class="fas fa-plus me-2"></i>Nova Conversa
+      </button>
+    </div>
+
+    <!-- =============================== -->
+    <!-- CARD PRINCIPAL DO CHAT -->
+    <!-- =============================== -->
+    <div class="card border-0 shadow-sm card-chat-principal">
+
+      <!-- Divide o card em lista de conversas e janela do chat -->
+      <div class="row g-0 h-100">
+
+        <!-- =============================== -->
+        <!-- LISTA DE CONVERSAS -->
+        <!-- =============================== -->
+        <div class="col-md-4 border-end h-100 d-flex flex-column listagem-canais">
+
+          <!-- Campo de busca de conversas -->
+          <div class="p-3 border-bottom">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text bg-white border-end-0 text-muted">
+                <i class="fas fa-search"></i>
+              </span>
+
+              <!-- Input visual para buscar contatos/conversas -->
+              <input type="text" class="form-control border-start-0" placeholder="Buscar conversa...">
+            </div>
+          </div>
+
+          <!-- Container que guarda os contatos/conversas -->
+          <div class="flex-grow-1 overflow-y-auto" id="lista-chats-contatos">
+
+            <!-- Conversa ativa exibida no chat da direita -->
+            <div class="contato-chat-item active p-3 d-flex align-items-center gap-3">
+              <div class="avatar-sigla bg-primary text-white">AS</div>
+
+              <div class="flex-grow-1 text-truncate">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 small fw-bold text-dark">Ana Souza - Professora</h6>
+                  <span class="tiny text-muted">09:42</span>
+                </div>
+
+                <p class="mb-0 tiny text-muted text-truncate">
+                  Obrigada, já vou orientar a turma sobre o comunicado.
+                </p>
+              </div>
+            </div>
+
+            <!-- Conversa com aviso de mensagem não lida -->
+            <div class="contato-chat-item p-3 d-flex align-items-center gap-3">
+              <div class="avatar-sigla bg-success text-white">CO</div>
+
+              <div class="flex-grow-1 text-truncate">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 small fw-bold text-dark">Coordenação Pedagógica</h6>
+                  <span class="tiny text-muted">Ontem</span>
+                </div>
+
+                <p class="mb-0 tiny text-muted text-truncate">
+                  Precisamos revisar os horários das turmas da manhã.
+                </p>
+              </div>
+
+              <!-- Bolinha vermelha simulando conversa com mensagem nova -->
+              <span class="badge bg-danger rounded-circle p-1 tiny" style="width: 8px; height: 8px;"></span>
+            </div>
+
+            <!-- Outra conversa disponível na lista -->
+            <div class="contato-chat-item p-3 d-flex align-items-center gap-3">
+              <div class="avatar-sigla bg-warning text-dark">LM</div>
+
+              <div class="flex-grow-1 text-truncate">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 small fw-bold text-dark">Lucas Martins - Aluno</h6>
+                  <span class="tiny text-muted">Seg</span>
+                </div>
+
+                <p class="mb-0 tiny text-muted text-truncate">
+                  Tenho uma dúvida sobre minha matrícula.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- JANELA DA CONVERSA ATIVA -->
+        <!-- =============================== -->
+        <div class="col-md-8 h-100 d-flex flex-column area-janela-chat">
+
+          <!-- Cabeçalho da conversa aberta -->
+          <div class="p-3 border-bottom d-flex align-items-center gap-3 bg-white">
+            <div class="avatar-sigla bg-primary text-white">AS</div>
+
+            <div>
+              <!-- Nome do contato da conversa aberta -->
+              <h6 class="mb-0 small fw-bold text-dark">Ana Souza - Professora</h6>
+
+              <!-- Status visual do contato -->
+              <span class="tiny text-success fw-600">
+                <i class="fas fa-circle font-xs me-1"></i>Online
+              </span>
+            </div>
+          </div>
+
+          <!-- Área rolável onde as mensagens aparecem -->
+          <div class="flex-grow-1 p-3 overflow-y-auto bg-chat-feed" id="feed-mensagens-container">
+
+            <!-- Mensagem recebida pelo administrador -->
+            <div class="msg-box msg-recebida mb-3">
+              <div class="msg-conteudo card p-2 border-0 shadow-xs">
+                <p class="mb-0 small">
+                  Bom dia! Gostaria de confirmar se o comunicado sobre a reunião pedagógica já pode ser enviado aos alunos.
+                </p>
+                <span class="text-end font-xs text-muted mt-1">09:35</span>
+              </div>
+            </div>
+
+            <!-- Mensagem enviada pelo administrador -->
+            <div class="msg-box msg-enviada mb-3">
+              <div class="msg-conteudo card p-2 text-white border-0 shadow-xs" style="background-color: #004A8D;">
+                <p class="mb-0 small">
+                  Bom dia, professora Ana. Pode enviar sim. Já revisei as informações e está tudo correto.
+                </p>
+                <span class="text-end font-xs text-light opacity-75 mt-1">09:38</span>
+              </div>
+            </div>
+
+            <!-- Mensagem recebida pelo administrador -->
+            <div class="msg-box msg-recebida mb-3">
+              <div class="msg-conteudo card p-2 border-0 shadow-xs">
+                <p class="mb-0 small">
+                  Perfeito, obrigada. Também vou avisar os representantes das turmas para reforçarem o recado.
+                </p>
+                <span class="text-end font-xs text-muted mt-1">09:40</span>
+              </div>
+            </div>
+
+            <!-- Mensagem enviada pelo administrador -->
+            <div class="msg-box msg-enviada mb-3">
+              <div class="msg-conteudo card p-2 text-white border-0 shadow-xs" style="background-color: #004A8D;">
+                <p class="mb-0 small">
+                  Ótimo. Qualquer ajuste, me avise por aqui.
+                </p>
+                <span class="text-end font-xs text-light opacity-75 mt-1">09:42</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Área inferior para digitar e enviar mensagens -->
+          <div class="p-3 border-top bg-white">
+            <form id="form-enviar-mensagem" class="d-flex gap-2">
+
+              <!-- Campo onde o admin escreve a mensagem -->
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="input-texto-mensagem"
+                placeholder="Escreva sua mensagem aqui..."
+                required
+                autocomplete="off"
+              >
+
+              <!-- Botão para enviar a mensagem -->
+              <button type="submit" class="btn btn-primary btn-sm px-3">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JS global do projeto, usado para comportamentos compartilhados -->
+  <script src="/shared/js/main.js"></script>
+
+  <!-- JS específico da página de mensagens -->
+  <script src="script.js"></script>
+</body>
+</html>

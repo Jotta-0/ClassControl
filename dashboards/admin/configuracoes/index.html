@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <!-- Configuração para aceitar acentos e textos em português -->
+  <meta charset="UTF-8">
+
+  <!-- Responsividade em telas menores -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título da aba do navegador -->
+  <title>ClassControl - Configurações do Administrador</title>
+
+  <!-- Fonte padrão do projeto -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap usado no layout, cards, botões e formulários -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Ícones usados na sidebar e nos cards -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS global compartilhado pelo sistema -->
+  <link rel="stylesheet" href="/shared/css/global.css">
+
+  <!-- CSS específico da página de configurações -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-light">
+
+  <!-- =============================== -->
+  <!-- SIDEBAR DO ADMINISTRADOR -->
+  <!-- =============================== -->
+  <aside class="sidebar">
+    <div class="sidebar-header mb-5">
+      <img src="/assets/imagens/Logo.png" alt="Logo ClassControl" width="150">
+    </div>
+
+    <nav>
+      <a href="../index.html" class="nav-link-custom">
+        <i class="fas fa-home"></i> Início
+      </a>
+
+      <a href="../usuarios/index.html" class="nav-link-custom">
+        <i class="fas fa-users"></i> Usuários
+      </a>
+
+      <a href="../turmas/index.html" class="nav-link-custom">
+        <i class="fas fa-graduation-cap"></i> Turmas
+      </a>
+
+      <a href="../mensagens/index.html" class="nav-link-custom">
+        <i class="fas fa-comments"></i> Mensagens
+      </a>
+
+      <a href="../comunicados/index.html" class="nav-link-custom">
+        <i class="fas fa-bullhorn"></i> Comunicados
+      </a>
+
+      <!-- Página atual: Configurações -->
+      <a href="#" class="nav-link-custom active">
+        <i class="fas fa-cog"></i> Configurações
+      </a>
+
+      <div class="logout-section mt-auto">
+        <a href="#" id="btn-logout" class="nav-link-custom text-danger">
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- =============================== -->
+  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- =============================== -->
+  <main class="main-content">
+    <div class="container-fluid p-0">
+
+      <!-- Cabeçalho da página -->
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+          <h1 class="fw-800 text-dark mb-1 h3">Configurações da Conta</h1>
+          <p class="text-muted small mb-0">
+            Gerencie seus dados administrativos, credenciais de acesso e preferências do painel.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- =============================== -->
+        <!-- COLUNA ESQUERDA -->
+        <!-- =============================== -->
+        <div class="col-12 col-lg-7">
+
+          <!-- Card com dados cadastrais do administrador -->
+          <div class="card card-config-base border-0 shadow-sm p-4 mb-4">
+            <div class="d-flex align-items-center mb-4">
+              <div class="bg-primary-subtle text-primary rounded-3 p-2 me-3">
+                <i class="fas fa-user-shield fa-lg"></i>
+              </div>
+
+              <div>
+                <h2 class="fw-700 text-dark h6 mb-0">Dados Administrativos</h2>
+                <span class="text-muted tiny">
+                  Informações de identificação interna no painel ClassControl.
+                </span>
+              </div>
+            </div>
+
+            <form id="form-dados-admin">
+              <div class="row g-3">
+
+                <!-- Nome do administrador -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Nome Completo</label>
+                  <input type="text" class="form-control form-control-custom fw-600 text-dark" value="Administrador Geral" required>
+                </div>
+
+                <!-- Código interno, bloqueado para edição manual -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Código Administrativo</label>
+                  <input type="text" class="form-control form-control-custom text-muted fw-600" value="ADM-20260001" disabled>
+                </div>
+
+                <!-- E-mail institucional do administrador -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">E-mail Institucional</label>
+                  <input type="email" class="form-control form-control-custom fw-600 text-dark" value="admin@classcontrol.com.br" required>
+                </div>
+
+                <!-- Telefone de contato administrativo -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Telefone / WhatsApp</label>
+                  <input type="text" class="form-control form-control-custom fw-600 text-dark" value="(11) 90000-0000">
+                </div>
+
+                <!-- Nível de acesso do administrador -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Nível de Acesso</label>
+                  <input type="text" class="form-control form-control-custom text-muted fw-600" value="Administrador Master" disabled>
+                </div>
+
+                <!-- Unidade vinculada ao administrador -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Unidade</label>
+                  <input type="text" class="form-control form-control-custom fw-600 text-dark" value="Unidade Principal">
+                </div>
+
+                <!-- Botão para salvar alterações cadastrais -->
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary fw-700 px-4 py-2 mt-2 rounded-3 small text-white">
+                    Salvar Alterações
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Card de segurança da conta -->
+          <div class="card card-config-base border-0 shadow-sm p-4">
+            <div class="d-flex align-items-center mb-4">
+              <div class="bg-danger-subtle text-danger rounded-3 p-2 me-3">
+                <i class="fas fa-shield-alt fa-lg"></i>
+              </div>
+
+              <div>
+                <h2 class="fw-700 text-dark h6 mb-0">Segurança da Conta</h2>
+                <span class="text-muted tiny">
+                  Atualize sua senha de acesso ao painel administrativo.
+                </span>
+              </div>
+            </div>
+
+            <form id="form-alterar-senha">
+              <div class="row g-3">
+
+                <!-- Campo da senha atual com botão para revelar/ocultar -->
+                <div class="col-12">
+                  <label class="form-label fw-600 text-secondary small mb-1">Senha Atual</label>
+                  <div class="input-group">
+                    <input type="password" id="senha-atual" class="form-control form-control-custom fw-600" required>
+
+                    <button class="btn btn-outline-light border px-3 text-muted" type="button" id="btn-toggle-senha">
+                      <i id="icone-olho" class="fas fa-eye-slash text-muted"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Nova senha -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Nova Senha</label>
+                  <input type="password" id="nova-senha" class="form-control form-control-custom fw-600" required>
+                </div>
+
+                <!-- Confirmação da nova senha -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-600 text-secondary small mb-1">Confirmar Nova Senha</label>
+                  <input type="password" id="confirma-senha" class="form-control form-control-custom fw-600" required>
+                </div>
+
+                <!-- Botão para modificar senha -->
+                <div class="col-12">
+                  <button type="submit" class="btn btn-dark fw-700 px-4 py-2 mt-2 rounded-3 small">
+                    Modificar Senha
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- COLUNA DIREITA -->
+        <!-- =============================== -->
+        <div class="col-12 col-lg-5">
+
+          <!-- Card de preferências de notificação -->
+          <div class="card card-config-base border-0 shadow-sm p-4 h-100">
+            <div class="d-flex align-items-center mb-4">
+              <div class="bg-warning-subtle text-warning rounded-3 p-2 me-3">
+                <i class="fas fa-bell fa-lg text-warning"></i>
+              </div>
+
+              <div>
+                <h2 class="fw-700 text-dark h6 mb-0">Preferências de Notificação</h2>
+                <span class="text-muted tiny">
+                  Escolha quais alertas administrativos deseja receber.
+                </span>
+              </div>
+            </div>
+
+            <!-- Alerta sobre novos usuários cadastrados -->
+            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row mb-3">
+              <div class="me-3">
+                <label class="form-check-label d-block fw-700 text-dark small mb-1">Novos Usuários</label>
+                <span class="text-muted tiny d-block">
+                  Receber avisos quando alunos, professores ou responsáveis forem cadastrados.
+                </span>
+              </div>
+
+              <input class="form-check-input ms-0 float-none switch-laranja" type="checkbox" role="switch" checked>
+            </div>
+
+            <!-- Alerta sobre mensagens recebidas -->
+            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row mb-3">
+              <div class="me-3">
+                <label class="form-check-label d-block fw-700 text-dark small mb-1">Novas Mensagens</label>
+                <span class="text-muted tiny d-block">
+                  Receber alertas quando houver novas conversas no painel administrativo.
+                </span>
+              </div>
+
+              <input class="form-check-input ms-0 float-none switch-laranja" type="checkbox" role="switch" checked>
+            </div>
+
+            <!-- Alerta sobre alterações em turmas -->
+            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row mb-3">
+              <div class="me-3">
+                <label class="form-check-label d-block fw-700 text-dark small mb-1">Alterações em Turmas</label>
+                <span class="text-muted tiny d-block">
+                  Notificar mudanças em turmas, cursos, professores vinculados ou matrículas.
+                </span>
+              </div>
+
+              <input class="form-check-input ms-0 float-none switch-laranja" type="checkbox" role="switch">
+            </div>
+
+            <!-- Alerta crítico sempre ativo -->
+            <div class="form-check form-switch d-flex justify-content-between align-items-start p-0 custom-switch-row disabled-opacity">
+              <div class="me-3">
+                <label class="form-check-label d-block fw-700 text-muted small mb-1">Alertas Críticos do Sistema</label>
+                <span class="text-muted tiny d-block">
+                  Avisos de segurança, falhas importantes e eventos administrativos sensíveis.
+                </span>
+              </div>
+
+              <input class="form-check-input ms-0 float-none" type="checkbox" role="switch" checked disabled>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- JS global do projeto -->
+  <script src="/shared/js/main.js"></script>
+
+  <!-- JS específico desta página -->
+  <script src="script.js"></script>
+</body>
+</html>
