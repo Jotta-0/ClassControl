@@ -53,7 +53,7 @@ form.addEventListener('submit', async (e) => {
 
   if (success) {
     alert('Cadastro realizado com sucesso!');
-    window.location.href = '../admin/index.html';
+    window.location.href = './index.html';
   } else {
     alert(`Erro ao cadastrar: ${error}`);
   }
