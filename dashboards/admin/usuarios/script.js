@@ -1,18 +1,21 @@
 // Reaproveita a função de cadastro que já existe na pasta cadastro.
 import { signUp } from "../cadastro/auth/auth.js";
 
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+// Conecta o JavaScript ao seu projeto Supabase.
+const supabase = createClient(
+  "https://motbailfflvxstzvicxs.supabase.co",
+  "sb_publishable_zUfZDfv9iSzNh_eIUYGhhg_NclbJRa1"
+);
+
 document.addEventListener("DOMContentLoaded", () => {
     // ===================================================
     // 1. BANCO LOCAL DE USUÁRIOS
     // ===================================================
 
     // Recupera usuários salvos no navegador ou cria uma lista inicial.
-    let bancoUsuarios = JSON.parse(localStorage.getItem("classcontrol_usuarios")) || [
-        { nome: "João Silva", cargo: "Administrador", cpf: "11111111111", email: "joao@classcontrol.com", acesso: "14/03/2026", status: "Ativo" },
-        { nome: "Maria Santos", cargo: "Professor", cpf: "11111111111", email: "maria@classcontrol.com", acesso: "13/03/2026", status: "Ativo" },
-        { nome: "Pedro Costa", cargo: "Professor", cpf: "11111111111", email: "pedro@classcontrol.com", acesso: "13/03/2026", status: "Inativo" },
-        { nome: "Ana Oliveira", cargo: "Aluno", cpf: "11111111111", email: "ana@classcontrol.com", acesso: "13/03/2026", status: "Ativo" }
-    ];
+    let bancoUsuarios = [];
 
     // Se ainda não existir nada salvo, salva a lista inicial.
     if (!localStorage.getItem("classcontrol_usuarios")) {
@@ -362,5 +365,63 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===================================================
 
     // Mostra os usuários ao abrir a página.
+    async function carregarUsuariosDoBanco() {
+
+    const {
+        data: { user }
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+        window.location.href = "../../../login.html";
+        return;
+    }
+
+    // Descobre quem está logado
+    const { data: usuarioLogado, error: erroUsuario } = await supabase
+        .from("usuarios")
+        .select("tipo_de_usuario")
+        .eq("auth_user_id", user.id)
+        .single();
+
+    if (erroUsuario) {
+        console.error(erroUsuario);
+        return;
+    }
+
+    // Permite acesso apenas ao administrador
+    if (usuarioLogado.tipo_de_usuario !== "ADM") {
+        alert("Acesso negado.");
+        return;
+    }
+
+    // Busca todos os usuários cadastrados
+    const { data, error } = await supabase
+        .from("usuarios")
+        .select(`
+            id_usuario,
+            nome,
+            email,
+            cpf,
+            tipo_de_usuario
+        `)
+        .order("nome");
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    bancoUsuarios = data.map(usuario => ({
+        id: usuario.id_usuario,
+        nome: usuario.nome,
+        email: usuario.email,
+        cpf: usuario.cpf,
+        cargo: converterTipoParaCargo(usuario.tipo_de_usuario),
+        acesso: "-",
+        status: "Ativo"
+    }));
+
     renderizarUsuarios();
+}
+   carregarUsuariosDoBanco();
 });
