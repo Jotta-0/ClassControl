@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Configuração para acentos e português -->
     <meta charset="UTF-8">
+
+    <!-- Responsividade -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ClassControl | Diário de Classe</title>
 
+    <!-- Fonte, Bootstrap e ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/shared/css/global.css"> 
-    <link rel="stylesheet" href="style.css"> 
+
+    <!-- Estilos do projeto -->
+    <link rel="stylesheet" href="/shared/css/global.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Sidebar do professor -->
     <aside class="sidebar">
         <button id="menu-toggle" class="menu-toggle-btn">
             <i class="fas fa-bars"></i>
         </button>
-         
+
         <div class="sidebar-header mb-5">
             <img src="/assets/imagens/Logo.png" alt="Logo ClassControl" width="150">
         </div>
+
         <nav>
-            <a href="../index.html" class="nav-link-custom"><i class="fas fa-home"></i> Início</a>            
+            <a href="../index.html" class="nav-link-custom"><i class="fas fa-home"></i> Início</a>
             <a href="#" class="nav-link-custom active"><i class="fas fa-clipboard-list"></i> Diário de Classe</a>
             <a href="../plano-aula/index.html" class="nav-link-custom"><i class="fas fa-book-open"></i> Planos de Aula</a>
             <a href="../atividades/index.html" class="nav-link-custom"><i class="fas fa-calendar-alt"></i> Avaliações e Calendário</a>
             <a href="../mural/index.html" class="nav-link-custom"><i class="fas fa-bullhorn"></i> Mural de Avisos</a>
             <a href="../mensagens/index.html" class="nav-link-custom"><i class="fas fa-comments"></i> Mensagens</a>
             <a href="../configuracoes/index.html" class="nav-link-custom"><i class="fas fa-cog"></i> Configurações</a>
-            
+
             <div class="logout-section mt-auto">
                 <a href="#" id="btn-logout" class="nav-link-custom text-danger">
                     <i class="fas fa-sign-out-alt"></i> Sair
@@ -40,13 +48,15 @@
     </aside>
 
     <main class="main-content">
-        
+
+        <!-- Cabeçalho com professor e turma -->
         <header class="mb-4">
             <div class="user-card-mini d-flex justify-content-between align-items-center w-100">
                 <div class="d-flex align-items-center gap-3">
                     <div class="user-profile">
                         <img src="https://ui-avatars.com/api/?name=Prof+Ricardo&background=004A8D&color=fff" class="rounded-pill shadow-sm" width="45">
                     </div>
+
                     <div>
                         <h6 class="fw-800 mb-0">Prof. Ricardo Oliveira</h6>
                         <span class="text-muted tiny">Especialista em Desenvolvimento de Sistemas</span>
@@ -64,31 +74,43 @@
             </div>
         </header>
 
+        <!-- Card principal do diário -->
         <div class="card border-0 shadow-sm mb-4" style="border-radius: 15px;">
             <div class="card-header bg-white border-0 pt-3 ps-3">
                 <ul class="nav nav-tabs card-header-tabs" id="diarioTabs" role="tablist">
+
+                    <!-- Aba de presença semanal -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active fw-bold text-dark" id="chamada-tab" data-bs-toggle="tab" data-bs-target="#chamada-pane" type="button" role="tab"><i class="fas fa-calendar-check me-2 text-primary"></i>Chamada Diária</button>
+                        <button class="nav-link active fw-bold text-dark" id="chamada-tab" data-bs-toggle="tab" data-bs-target="#chamada-pane" type="button" role="tab">
+                            <i class="fas fa-calendar-check me-2 text-primary"></i>Presença Semanal
+                        </button>
                     </li>
+
+                    <!-- Aba de conceitos por UC -->
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link fw-bold text-dark" id="notas-tab" data-bs-toggle="tab" data-bs-target="#notas-pane" type="button" role="tab"><i class="fas fa-graduation-cap me-2 text-success"></i>Lançamento de Notas</button>
+                        <button class="nav-link fw-bold text-dark" id="notas-tab" data-bs-toggle="tab" data-bs-target="#notas-pane" type="button" role="tab">
+                            <i class="fas fa-graduation-cap me-2 text-success"></i>Conceitos por UC
+                        </button>
                     </li>
                 </ul>
             </div>
 
             <div class="card-body tab-content p-4" id="diarioTabsContent">
-                
+
+                <!-- Aba de presença semanal -->
                 <div class="tab-pane fade show active" id="chamada-pane" role="tabpanel" aria-labelledby="chamada-tab">
+
                     <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
                         <div class="d-flex align-items-center gap-2">
                             <label for="data-chamada" class="fw-bold text-secondary small">Data da Aula:</label>
-                            <input type="date" id="data-chamada" class="form-control border-0 shadow-sm" style="border-radius: 8px; background-color: #f8fafc;" value="2026-06-24">
+
+                            <!-- O JS coloca a data atual automaticamente, mas o campo continua editável -->
+                            <input type="date" id="data-chamada" class="form-control border-0 shadow-sm" style="border-radius: 8px; background-color: #f8fafc;">
                         </div>
-                        <div>
-                            <button type="button" id="btn-presenca-geral" class="btn btn-outline-primary btn-sm fw-bold" style="border-radius: 8px;">
-                                <i class="fas fa-check-double me-1"></i> Marcar Presença para Todos
-                            </button>
-                        </div>
+
+                        <button type="button" id="btn-presenca-geral" class="btn btn-outline-primary btn-sm fw-bold" style="border-radius: 8px;">
+                            <i class="fas fa-check-double me-1"></i> Definir Excelente para Todos
+                        </button>
                     </div>
 
                     <div class="table-responsive">
@@ -97,24 +119,31 @@
                                 <tr class="tiny fw-bold text-muted text-uppercase">
                                     <th class="border-0">Matrícula</th>
                                     <th class="border-0">Nome do Aluno</th>
-                                    <th class="border-0 text-center">Frequência Atual</th>
-                                    <th class="border-0 text-center" style="width: 150px;">Presença</th>
+                                    <th class="border-0 text-center" style="width: 230px;">Frequência Semanal</th>
+                                    <th class="border-0 text-center" style="width: 110px;">Ocorrência</th>
                                 </tr>
                             </thead>
+
                             <tbody class="small" id="tabela-chamada-corpo">
-                                </tbody>
+                                <!-- Preenchido pelo JavaScript -->
+                            </tbody>
                         </table>
                     </div>
+
                     <div class="d-flex justify-content-end mt-3">
-                        <button class="btn btn-primary px-4 fw-bold" style="border-radius: 10px;">Salvar Chamada</button>
+                        <button id="btn-salvar-chamada" class="btn btn-primary px-4 fw-bold" style="border-radius: 10px;">
+                            Salvar Presença
+                        </button>
                     </div>
                 </div>
 
+                <!-- Aba de conceitos por UC -->
                 <div class="tab-pane fade" id="notas-pane" role="tabpanel" aria-labelledby="notas-tab">
+
                     <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
                         <div>
-                            <h6 class="fw-bold mb-0 text-secondary">Avaliações Ativas no Semestre</h6>
-                            <span class="tiny text-muted">Insira os conceitos/notas nos campos correspondentes.</span>
+                            <h6 class="fw-bold mb-0 text-secondary">Acompanhamento Qualitativo por UC</h6>
+                            <span class="tiny text-muted">Registre o desenvolvimento do aluno como atendido, parcialmente atendido ou não atendido.</span>
                         </div>
                     </div>
 
@@ -124,28 +153,82 @@
                                 <tr class="tiny fw-bold text-muted text-uppercase">
                                     <th class="border-0">Matrícula</th>
                                     <th class="border-0">Nome do Aluno</th>
-                                    <th class="border-0 text-center" style="width: 110px;">Avaliação 1</th>
-                                    <th class="border-0 text-center" style="width: 110px;">Avaliação 2</th>
-                                    <th class="border-0 text-center" style="width: 110px;">Proj. Integrador</th>
-                                    <th class="border-0 text-center" style="width: 100px;">Situação</th>
+                                    <th class="border-0 text-center" style="width: 190px;">UC 1</th>
+                                    <th class="border-0 text-center" style="width: 190px;">UC 2</th>
+                                    <th class="border-0 text-center" style="width: 190px;">Projeto Integrador</th>
+                                    <th class="border-0 text-center" style="width: 150px;">Situação</th>
                                 </tr>
                             </thead>
+
                             <tbody class="small" id="tabela-notas-corpo">
-                                </tbody>
+                                <!-- Preenchido pelo JavaScript -->
+                            </tbody>
                         </table>
                     </div>
+
                     <div class="d-flex justify-content-end mt-3">
-                        <button class="btn btn-success px-4 fw-bold" style="border-radius: 10px;">Publicar Notas</button>
+                        <button id="btn-publicar-notas" class="btn btn-success px-4 fw-bold" style="border-radius: 10px;">
+                            Publicar Conceitos
+                        </button>
                     </div>
                 </div>
 
             </div>
         </div>
-
     </main>
 
+    <!-- Modal de ocorrência integrado ao diário -->
+    <div class="modal fade" id="modalOcorrencia" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <div class="modal-header border-0 pt-4 px-4">
+                    <h5 class="fw-bold text-dark mb-0">
+                        <i class="fas fa-triangle-exclamation text-warning me-2"></i>Registrar Ocorrência
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+
+                <div class="modal-body px-4">
+                    <form id="formOcorrencia">
+                        <input type="hidden" id="aluno-ocorrencia-id">
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Aluno</label>
+                            <p id="aluno-ocorrencia-nome" class="fw-bold text-dark mb-0"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Professor</label>
+                            <p id="professorNome" class="text-muted small mb-0">Professor: carregando...</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nome" class="form-label small fw-bold text-muted">Nome da Ocorrência</label>
+                            <input type="text" id="nome" class="form-control" required style="border-radius: 8px; padding: 10px;">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label small fw-bold text-muted">Descrição</label>
+                            <textarea id="descricao" class="form-control" rows="4" required style="border-radius: 8px; padding: 10px;"></textarea>
+                        </div>
+
+                        <div class="d-flex gap-2 justify-content-end my-3">
+                            <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
+                            <button type="submit" class="btn btn-primary px-4" style="border-radius: 8px;">
+                                Registrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap antes do script da página -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/shared/js/main.js"></script>
-    <script src="script.js"></script>
+
+    <!-- type="module" permite usar import do Supabase -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
