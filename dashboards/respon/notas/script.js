@@ -50,6 +50,6 @@ function inicializarBotoesDetalhes() {
  * @param {string} nomeUC - O nome da Unidade Curricular clicada
  */
 function abrirModalDetalhesUC(nomeUC) {
-    // Aqui ligarás ao Modal do Bootstrap para mostrar os critérios atendidos
+    // Aqui é usado o Modal do Bootstrap para mostrar os critérios atendidos
     alert(`A abrir os critérios detalhados da unidade: ${nomeUC}`);
 }
