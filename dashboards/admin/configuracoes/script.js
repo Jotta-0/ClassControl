@@ -1,111 +1,91 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ===================================================
+    // 1. REVELAR / OCULTAR SENHA ATUAL
+    // ===================================================
+    const btnToggleSenha = document.getElementById('btn-toggle-senha');
+    const inputSenhaAtual = document.getElementById('senha-atual');
+    const iconeOlho = document.getElementById('icone-olho');
 
-  // ===================================================
-  // 1. REVELAR / OCULTAR SENHA ATUAL
-  // ===================================================
+    if (btnToggleSenha && inputSenhaAtual && iconeOlho) {
+        btnToggleSenha.addEventListener('click', () => {
+            if (inputSenhaAtual.type === 'password') {
+                inputSenhaAtual.type = 'text';
+                iconeOlho.className = 'fas fa-eye text-primary'; 
+            } else {
+                inputSenhaAtual.type = 'password';
+                iconeOlho.className = 'fas fa-eye-slash text-muted'; 
+            }
+        });
+    }
 
-  // Botão usado para alternar a visibilidade da senha atual.
-  const btnToggleSenha = document.getElementById("btn-toggle-senha");
+    // ===================================================
+    // 2. PROTEÇÃO E MÁSCARA DO CPF (PRIVACIDADE)
+    // ===================================================
+    const inputCpf = document.getElementById('cpf-responsavel');
+    const btnToggleCpf = document.getElementById('btn-toggle-cpf');
+    const iconeCadeado = document.getElementById('icone-cadeado');
 
-  // Campo da senha atual.
-  const inputSenhaAtual = document.getElementById("senha-atual");
+    if (inputCpf && btnToggleCpf && iconeCadeado) {
+        const cpfOriginal = inputCpf.value; 
+        
+        const gerarMascaraCpf = (cpf) => {
+            if (cpf.length >= 14) {
+                return `${cpf.substring(0, 4)}***.***${cpf.substring(11)}`;
+            }
+            return cpf;
+        };
 
-  // Ícone de olho dentro do botão.
-  const iconeOlho = document.getElementById("icone-olho");
+        inputCpf.value = gerarMascaraCpf(cpfOriginal);
 
-  // Só ativa a função se os elementos existirem na página.
-  if (btnToggleSenha && inputSenhaAtual && iconeOlho) {
-    btnToggleSenha.addEventListener("click", () => {
+        btnToggleCpf.addEventListener('click', () => {
+            if (inputCpf.value.includes('*')) {
+                inputCpf.value = cpfOriginal;
+                iconeCadeado.className = 'fas fa-lock-open text-primary';
+                btnToggleCpf.title = "Ocultar CPF";
+            } else {
+                inputCpf.value = gerarMascaraCpf(cpfOriginal);
+                iconeCadeado.className = 'fas fa-lock text-muted';
+                btnToggleCpf.title = "Mostrar CPF";
+            }
+        });
+    }
 
-      // Se a senha estiver oculta, mostra o texto.
-      if (inputSenhaAtual.type === "password") {
-        inputSenhaAtual.type = "text";
-        iconeOlho.className = "fas fa-eye text-primary";
-        return;
-      }
+    // ===================================================
+    // 3. ENVIO DO FORMULÁRIO DE DADOS DE CONTATO
+    // ===================================================
+    const formDados = document.getElementById('form-dados-responsavel');
+    if (formDados) {
+        formDados.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('💾 Sucesso! Suas alterações cadastrais foram salvas no sistema da secretaria.');
+        });
+    }
 
-      // Se a senha estiver visível, oculta novamente.
-      inputSenhaAtual.type = "password";
-      iconeOlho.className = "fas fa-eye-slash text-muted";
-    });
-  }
+    // ===================================================
+    // 4. ENVIO DO FORMULÁRIO DE ALTERAÇÃO DE SENHA (CORRIGIDO)
+    // ===================================================
+    const formSenha = document.getElementById('form-alterar-senha');
+    if (formSenha) {
+        formSenha.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Busca os elementos de forma explícita por ID para evitar erros de índice dinâmico
+            const novaSenha = document.getElementById('nova-senha').value;
+            const confirmaSenha = document.getElementById('confirma-senha').value;
 
-  // ===================================================
-  // 2. ENVIO DO FORMULÁRIO DE DADOS ADMINISTRATIVOS
-  // ===================================================
+            if (novaSenha !== confirmaSenha) {
+                alert('❌ Erro: A nova senha e a confirmação não são idênticas. Tente novamente.');
+                return;
+            }
 
-  // Formulário responsável pelos dados do administrador.
-  const formDadosAdmin = document.getElementById("form-dados-admin");
-
-  // Só adiciona o evento se o formulário existir.
-  if (formDadosAdmin) {
-    formDadosAdmin.addEventListener("submit", (e) => {
-
-      // Impede o recarregamento da página.
-      e.preventDefault();
-
-      // Neste momento a alteração é apenas visual/local.
-      alert("Dados administrativos salvos com sucesso!");
-    });
-  }
-
-  // ===================================================
-  // 3. ENVIO DO FORMULÁRIO DE ALTERAÇÃO DE SENHA
-  // ===================================================
-
-  // Formulário usado para alterar a senha.
-  const formSenha = document.getElementById("form-alterar-senha");
-
-  // Só ativa se o formulário existir.
-  if (formSenha) {
-    formSenha.addEventListener("submit", (e) => {
-
-      // Impede o envio tradicional do formulário.
-      e.preventDefault();
-
-      // Captura a nova senha digitada.
-      const novaSenha = document.getElementById("nova-senha").value;
-
-      // Captura a confirmação da nova senha.
-      const confirmaSenha = document.getElementById("confirma-senha").value;
-
-      // Confere se os dois campos são iguais.
-      if (novaSenha !== confirmaSenha) {
-        alert("Erro: a nova senha e a confirmação não são iguais.");
-        return;
-      }
-
-      // Exibe confirmação visual para o administrador.
-      alert("Senha atualizada com sucesso!");
-
-      // Limpa os campos do formulário de senha.
-      formSenha.reset();
-
-      // Depois de salvar, volta a esconder a senha atual se ela estiver visível.
-      if (inputSenhaAtual && inputSenhaAtual.type === "text") {
-        inputSenhaAtual.type = "password";
-        iconeOlho.className = "fas fa-eye-slash text-muted";
-      }
-    });
-  }
-
-  // ===================================================
-  // 4. PREFERÊNCIAS DE NOTIFICAÇÃO
-  // ===================================================
-
-  // Seleciona todos os switches editáveis de notificação.
-  const switchesNotificacao = document.querySelectorAll(".switch-laranja");
-
-  // Adiciona um comportamento simples ao alterar qualquer preferência.
-  switchesNotificacao.forEach((switchItem) => {
-    switchItem.addEventListener("change", () => {
-
-      // Guarda o estado atual do switch.
-      const estaAtivo = switchItem.checked;
-
-      // Apenas registra no console por enquanto.
-      console.log("Preferência de notificação alterada:", estaAtivo);
-    });
-  });
-
+            alert('🔒 Senha atualizada com sucesso! Use suas novas credenciais no próximo acesso.');
+            formSenha.reset();
+            
+            if (inputSenhaAtual && inputSenhaAtual.type === 'text') {
+                inputSenhaAtual.type = 'password';
+                iconeOlho.className = 'fas fa-eye-slash text-muted';
+            }
+        });
+    }
 });
