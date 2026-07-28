@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    document.getElementById("nomeUsuario").textContent = usuario.nome;
+    document.getElementById("nomeUsuario").textContent = `Olá, ${usuario.nome}`;
 
     await carregarDashboard();
 
