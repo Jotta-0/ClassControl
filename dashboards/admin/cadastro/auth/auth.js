@@ -29,3 +29,24 @@ export async function signUp(email, password, cpf, nome, tipo) {
     return { success: false, error: error.message };
   }
 }
+export async function getUsuarioLogado() {
+
+    const {
+        data: { user }
+    } = await supabase.auth.getUser();
+
+    if (!user) return null;
+
+    const { data, error } = await supabase
+        .from("usuarios")
+        .select("*")
+        .eq("auth_user_id", user.id)
+        .single();
+
+    if (error) {
+        console.error(error);
+        return null;
+    }
+
+    return data;
+}
