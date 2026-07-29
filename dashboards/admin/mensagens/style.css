@@ -1,0 +1,94 @@
+/* Definição de layout de tela cheia sem barras de rolagem globais */
+.wrapper-principal {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.conteiner-mensagens {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Força o card do chat a se comportar como uma aplicação Desktop */
+.card-chat-principal {
+    flex-grow: 1;
+    height: calc(100vh - 140px);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Customização dos itens da lista de canais à esquerda */
+.contato-chat-item {
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.contato-chat-item:hover {
+    background-color: #f8fafc;
+}
+
+.contato-chat-item.active {
+    background-color: #eff6ff;
+    border-left: 4px solid #004A8D;
+}
+
+/* Círculos com siglas para simular avatares de forma leve */
+.avatar-sigla {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* Configuração do Feed de Balões */
+.bg-chat-feed {
+    background-color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.msg-box {
+    display: flex;
+    width: 100%;
+}
+
+.msg-conteudo {
+    max-width: 75%;
+    border-radius: 12px;
+}
+
+/* Alinhamentos condicionais para quem envia e quem recebe */
+.msg-recebida {
+    justify-content: flex-start;
+}
+.msg-recebida .msg-conteudo {
+    background-color: #ffffff;
+    border-top-left-radius: 2px;
+}
+
+.msg-enviada {
+    justify-content: flex-end;
+}
+.msg-enviada .msg-conteudo {
+    border-top-right-radius: 2px;
+}
+
+/* Utilitários auxiliares de tipografia */
+.fw-800 { font-weight: 800; }
+.fw-600 { font-weight: 600; }
+.tiny { font-size: 12px; }
+.font-xs { font-size: 10px; }
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .listagem-canais {
+        display: none !important; /* Esconde contatos no mobile para focar no chat ativo */
+    }
+}

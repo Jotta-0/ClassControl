@@ -1,4 +1,4 @@
-/* Definição de layout de tela cheia sem barras de rolagem globais escrotas */
+/* Definição de layout de tela cheia sem barras de rolagem globais */
 .wrapper-principal {
     height: 100vh;
     overflow: hidden;
@@ -80,7 +80,7 @@
     border-top-right-radius: 2px;
 }
 
-/* utilitários auxiliares de tipografia */
+/* Utilitários auxiliares de tipografia */
 .fw-800 { font-weight: 800; }
 .fw-600 { font-weight: 600; }
 .tiny { font-size: 12px; }

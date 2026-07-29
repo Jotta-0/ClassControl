@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <td>${mascararCPF(usuario.cpf)}</td>
                     <td>${usuario.email}</td>
-                    <td class="text-muted tiny">${usuario.acesso || "Sem acessos"}</td>
+                    
 
                     <td>
                         <span class="badge-status ${estaAtivo ? "status-ativo" : "status-inativo"}"
@@ -258,7 +258,6 @@ document.addEventListener("DOMContentLoaded", () => {
             cargo: converterTipoParaCargo(tipo),
             cpf,
             email,
-            acesso: "Sem acessos",
             status: "Ativo"
         });
 
@@ -417,7 +416,6 @@ document.addEventListener("DOMContentLoaded", () => {
         email: usuario.email,
         cpf: usuario.cpf,
         cargo: converterTipoParaCargo(usuario.tipo_de_usuario),
-        acesso: "-",
         status: "Ativo"
     }));
 
